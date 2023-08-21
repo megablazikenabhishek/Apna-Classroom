@@ -7,7 +7,7 @@ function App() {
     <>
       <AdminHome />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
