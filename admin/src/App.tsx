@@ -1,11 +1,16 @@
-import './App.css'
-import AdminHome from './pages/AdminHome'
+import './App.css';
+import AdminHome from './pages/AdminHome';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
 
   return (
     <>
-      <AdminHome />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/admin" element={<AdminHome path={0} />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
