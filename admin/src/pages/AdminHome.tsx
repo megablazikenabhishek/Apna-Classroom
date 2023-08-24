@@ -14,9 +14,9 @@ import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { MainListItems, secondaryListItems } from '../components/AdminComponents/listItems';
-import Reports from '../components/AdminComponents/Reports';
-import TeacherPage from '../components/AdminComponents/TeacherPage';
+import { MainListItems, secondaryListItems } from '../components/listItems';
+import Reports from '../components/Reports';
+import TeacherPage from '../components/TeacherPage';
 
 function Copyright(props: any) {
     return (
