@@ -3,6 +3,7 @@ const app = express();
 const { checkForAdmin } = require("./middlewares/authMiddleware");
 require("dotenv").config();
 
+app.use(require("cors")());
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -10,12 +11,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/v1/admin", require("./routes/adminRoutes/adminAuth.js"));
 app.use(
   "/api/v1/admin/teacher",
-  checkForAdmin,
+  // checkForAdmin,
   require("./routes/adminRoutes/adminTeacher.js")
 );
 app.use(
   "/api/v1/admin/student",
-  checkForAdmin,
+  // checkForAdmin,
   require("./routes/adminRoutes/adminStudent.js")
 );
 

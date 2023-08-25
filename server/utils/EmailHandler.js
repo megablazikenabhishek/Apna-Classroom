@@ -22,6 +22,7 @@ exports.sendTeacherMail = async (teacher) => {
             <li>Name: ${teacher.name}</li>
             <li>Age: ${teacher.age}</li>
             <li>Email: ${teacher.email}</li>
+            <li>password: ${teacher.password}</li>
             <li>Birthday: ${teacher.birthday}</li>
             <li>Address: ${teacher.address}</li>
             <li>Contact Number: ${teacher.contactNumber}</li>

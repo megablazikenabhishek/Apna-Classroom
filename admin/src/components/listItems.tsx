@@ -9,6 +9,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import ClassIcon from '@mui/icons-material/Class';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import AddIcon from '@mui/icons-material/Add';
 
 interface Props {
     setPath: any;
@@ -17,7 +18,9 @@ interface Props {
 export const MainListItems = (props: Props) => {
     return (
         <React.Fragment>
-            <ListItemButton>
+            <ListItemButton onClick={() => {
+                props.setPath(0)
+            }}>
                 <ListItemIcon>
                     <DashboardIcon />
                 </ListItemIcon>
@@ -27,23 +30,45 @@ export const MainListItems = (props: Props) => {
                 props.setPath(1)
             }}>
                 <ListItemIcon>
+                    <AddIcon />
+                </ListItemIcon>
+                <ListItemText primary="Add Teacher" />
+            </ListItemButton>
+            <ListItemButton onClick={() => {
+                props.setPath(2)
+            }}>
+                <ListItemIcon>
                     <ClassIcon />
                 </ListItemIcon>
-                <ListItemText primary="Teacher Page" />
+                <ListItemText primary="View Teacher" />
             </ListItemButton>
-            <ListItemButton>
+            <ListItemButton onClick={() => {
+                props.setPath(3)
+            }}>
+                <ListItemIcon>
+                    <AddIcon />
+                </ListItemIcon>
+                <ListItemText primary="Add Student" />
+            </ListItemButton>
+            <ListItemButton onClick={() => {
+                props.setPath(4)
+            }}>
+                <ListItemIcon>
+                    <PeopleIcon />
+                </ListItemIcon>
+                <ListItemText primary="View Student" />
+            </ListItemButton>
+            <ListItemButton onClick={() => {
+                props.setPath(5)
+            }}>
                 <ListItemIcon>
                     <AutoStoriesIcon />
                 </ListItemIcon>
                 <ListItemText primary="Subject Page" />
             </ListItemButton>
-            <ListItemButton>
-                <ListItemIcon>
-                    <PeopleIcon />
-                </ListItemIcon>
-                <ListItemText primary="Student Page" />
-            </ListItemButton>
-            <ListItemButton>
+            <ListItemButton onClick={() => {
+                props.setPath(6)
+            }}>
                 <ListItemIcon>
                     <BarChartIcon />
                 </ListItemIcon>
@@ -69,12 +94,6 @@ export const secondaryListItems = (
                 <AssignmentIcon />
             </ListItemIcon>
             <ListItemText primary="Last quarter" />
-        </ListItemButton>
-        <ListItemButton>
-            <ListItemIcon>
-                <AssignmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Year-end sale" />
         </ListItemButton>
     </React.Fragment>
 );

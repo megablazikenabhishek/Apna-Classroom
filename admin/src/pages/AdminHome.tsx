@@ -16,7 +16,10 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { MainListItems, secondaryListItems } from '../components/listItems';
 import Reports from '../components/Reports';
-import TeacherPage from '../components/TeacherPage';
+import AddTeacherPage from './AddTeacherPage';
+import ViewTeacherPage from './ViewTeacherPage';
+import URI from '../URI';
+import axios from 'axios';
 
 function Copyright(props: any) {
     return (
@@ -88,11 +91,63 @@ interface path {
     path: number
 }
 
+
+// for View Teacher Page
+interface ViewTeacherData {
+    id: string;
+    name: string;
+    email: string;
+    age: number;
+    salary: number;
+    experience: number;
+}
+
+function createViewTeacherData(
+    id: string,
+    name: string,
+    email: string,
+    age: number,
+    salary: number,
+    experience: number,
+): ViewTeacherData {
+    return {
+        id,
+        name,
+        email,
+        age,
+        salary,
+        experience,
+    };
+}
+
 export default function Dashboard(props: path) {
     const [path, setPath] = React.useState(props.path);
-    console.log(path);
-
+    const [viewTeacherData, setViewTeacherData] = React.useState<ViewTeacherData[]>([]);
     const [open, setOpen] = React.useState(true);
+    // console.log(path);
+
+
+    // for View Teacher Page
+    React.useEffect(() => {
+        const fetchData = async () => {
+            const result = await axios.get(
+                `${URI}/api/v1/admin/teacher`
+            );
+            // setRows(result.data);
+            // console.log(result.data);
+            const { data } = result.data;
+            let rowData: ViewTeacherData[] = [];
+            for (let i = 0; i < data.length; i++) {
+                rowData.push(createViewTeacherData(data[i]._id, data[i].name, data[i].email, data[i].age, data[i].salary, data[i].yearsOfExperience))
+            }
+            console.log("rowData: ", rowData);
+            setViewTeacherData(() => {
+                return [...rowData]
+            });
+        }
+        fetchData();
+    }, []);
+
     const toggleDrawer = () => {
         setOpen(!open);
     };
@@ -102,7 +157,9 @@ export default function Dashboard(props: path) {
             case 0:
                 return <Reports />;
             case 1:
-                return <TeacherPage />;
+                return <AddTeacherPage />;
+            case 2:
+                return <ViewTeacherPage rows={viewTeacherData} />;
             default:
                 return <Reports />;
         }
