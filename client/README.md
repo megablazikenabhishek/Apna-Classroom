@@ -1,1 +1,1 @@
-# HeyU - Video Calling App using WebRTC, React + Vite and firebase.
+# Apna Classroom made using React + Vite and firebase.
