@@ -29,18 +29,9 @@ function Login() {
     };
   }, []);
 
-  const [emailFocus, setEmailFocus] = useState(false);
-  const [passwordFocus, setPasswordFocus] = useState(false);
-
-  const handleEmailInput = (event) => {
-    setEmailFocus(event.target.value !== "");
-  };
-
-  const handlePasswordInput = (event) => {
-    setPasswordFocus(event.target.value !== "");
-  };
-
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <div className="wrapper">
@@ -120,6 +111,8 @@ function Login() {
                     type="email"
                     placeholder=""
                     autoComplete="off"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                   <span id="span-email">Email</span>
                 </label>
@@ -128,7 +121,9 @@ function Login() {
                     id="password"
                     name="password"
                     type="password"
+                    value={password}
                     placeholder=""
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <span id="span-password">Password</span>
                 </label>

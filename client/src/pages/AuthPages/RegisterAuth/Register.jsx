@@ -29,25 +29,12 @@ function Register() {
     };
   }, []);
 
-  const [ageFocus, setAgeFocus] = useState(false);
-  const [oldPasswordFocus, setOldPasswordFocus] = useState(false);
-  const [newPasswordFocus, setNewPasswordFocus] = useState(false);
+  const [name, setName] = useState("");
+  const [age, setAge] = useState(null);
+  const [oldpassword, setOldpassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [newpassword, setNewpassword] = useState("");
 
-  const handleNameInput = (event) => {
-    setNameFocus(event.target.value !== "");
-  };
-
-  const handleAgeInput = (event) => {
-    setAgeFocus(event.target.value !== "");
-  };
-
-  const handleOldPasswordInput = (event) => {
-    setOldPasswordFocus(event.target.value !== "");
-  };
-
-  const handleNewPasswordInput = (event) => {
-    setNewPasswordFocus(event.target.value !== "");
-  };
   return (
     <div className="wrapper">
       <main>
@@ -122,35 +109,6 @@ function Register() {
                   <Link to="/login">Sign in Free!</Link>
                 </p>
               </div>
-              {/* <form>
-                <label htmlFor="email">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder=""
-                    autoComplete="off"
-                  />
-                  <span id="span-email">Email</span>
-                </label>
-                <label htmlFor="password">
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    placeholder=""
-                  />
-                  <span id="span-password">Password</span>
-                </label>
-                <div className="recovery">
-                  <div>
-                    <input type="checkbox" id="remember" name="remember" />
-                    <label htmlFor="remember">Remember me</label>
-                  </div>
-                  <a href="">Forgot Password?</a>
-                </div>
-                <input type="submit" value="Login with Email" />
-              </form> */}
               <form>
                 <label htmlFor="name">
                   <input
@@ -159,7 +117,8 @@ function Register() {
                     type="text"
                     placeholder=""
                     autoComplete="off"
-                    onChange={handleNameInput}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                   <span id="span-name">Name</span>
                 </label>
@@ -169,7 +128,9 @@ function Register() {
                     name="email"
                     type="email"
                     placeholder=""
+                    value={email}
                     autoComplete="off"
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                   <span id="span-email">Email</span>
                 </label>
@@ -179,7 +140,8 @@ function Register() {
                     name="age"
                     type="number"
                     placeholder=""
-                    onChange={handleAgeInput}
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
                   />
                   <span id="span-age">Age</span>
                 </label>
@@ -189,7 +151,8 @@ function Register() {
                     name="old-password"
                     type="password"
                     placeholder=""
-                    onChange={handleOldPasswordInput}
+                    value={oldpassword}
+                    onChange={(e) => setOldpassword(e.target.value)}
                   />
                   <span id="span-old-password">Old Password</span>
                 </label>
@@ -199,7 +162,8 @@ function Register() {
                     name="new-password"
                     type="password"
                     placeholder=""
-                    onChange={handleNewPasswordInput}
+                    value={newpassword}
+                    onChange={(e) => setNewpassword(e.target.value)}
                   />
                   <span id="span-new-password">New Password</span>
                 </label>
