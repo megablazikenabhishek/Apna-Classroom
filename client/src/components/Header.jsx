@@ -10,8 +10,8 @@ const Header = () => {
   return (
     <div className="flex w-screen justify-between p-[20px]">
       <div className="flex items-center justify-center">
-        <img src="/logo_heyu.svg" alt="" className="h-14" />
-        <span className="text-[25px] pl-3 text-onprimary">HeyU</span>
+        <img src="/logo.png" alt="" className="h-14" />
+        <span className="text-[25px] pl-3 text-onprimary">Apna Classroom</span>
       </div>
       <div className="flex items-center">
         <FontAwesomeIcon

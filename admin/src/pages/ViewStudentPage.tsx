@@ -25,28 +25,31 @@ import URI from '../URI';
 
 interface Data {
     id: string;
+    rollno: number;
     name: string;
     email: string;
     age: number;
-    salary: number;
-    experience: number;
+    cgpa: number;
+    contactNumber: string;
 }
 
 function createData(
     id: string,
+    rollno: number,
     name: string,
     email: string,
     age: number,
-    salary: number,
-    experience: number,
+    cgpa: number,
+    contactNumber: string,
 ): Data {
     return {
         id,
+        rollno,
         name,
         email,
         age,
-        salary,
-        experience,
+        cgpa,
+        contactNumber,
     };
 }
 
@@ -106,6 +109,12 @@ const headCells: readonly HeadCell[] = [
         label: 'Full Name',
     },
     {
+        id: 'rollno',
+        numeric: true,
+        disablePadding: false,
+        label: 'Roll No',
+    },
+    {
         id: 'email',
         numeric: true,
         disablePadding: false,
@@ -118,16 +127,16 @@ const headCells: readonly HeadCell[] = [
         label: 'Age',
     },
     {
-        id: 'salary',
+        id: 'cgpa',
         numeric: true,
         disablePadding: false,
-        label: 'Salary',
+        label: 'CGPA',
     },
     {
-        id: 'experience',
+        id: 'contactNumber',
         numeric: true,
         disablePadding: false,
-        label: 'Experience',
+        label: 'Contact Number',
     },
 ];
 
@@ -222,7 +231,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
                     id="tableTitle"
                     component="div"
                 >
-                    All Teachers
+                    All Students
                 </Typography>
             )}
             {numSelected > 0 ? (
@@ -253,6 +262,18 @@ export default function EnhancedTable(props: PropsRows) {
     const [dense, setDense] = React.useState(false);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
     const rows = props.rows;
+
+    // const rows = [
+    //     createData('ashdifsdhf', 159, 'ahsdifhsdif', 'ashdfisdhfis', 55, 9.0, 'ashdifhsdifh'),
+    //     createData('ashdifsdhf', 159, 'ahsdifhsdif', 'ashdfisdhfis', 55, 9.0, 'ashdifhsdifh'),
+    //     createData('ashdifsdhf', 159, 'ahsdifhsdif', 'ashdfisdhfis', 55, 9.0, 'ashdifhsdifh'),
+    //     createData('ashdifsdhf', 159, 'ahsdifhsdif', 'ashdfisdhfis', 55, 9.0, 'ashdifhsdifh'),
+    //     createData('ashdifsdhf', 159, 'ahsdifhsdif', 'ashdfisdhfis', 55, 9.0, 'ashdifhsdifh'),
+    //     createData('ashdifsdhf', 159, 'ahsdifhsdif', 'ashdfisdhfis', 55, 9.0, 'ashdifhsdifh'),
+    //     createData('ashdifsdhf', 159, 'ahsdifhsdif', 'ashdfisdhfis', 55, 9.0, 'ashdifhsdifh'),
+    //     createData('ashdifsdhf', 159, 'ahsdifhsdif', 'ashdfisdhfis', 55, 9.0, 'ashdifhsdifh'),
+    //     createData('ashdifsdhf', 159, 'ahsdifhsdif', 'ashdfisdhfis', 55, 9.0, 'ashdifhsdifh'),
+    // ];
 
     console.log("rows", rows);
 
@@ -346,7 +367,7 @@ export default function EnhancedTable(props: PropsRows) {
                                 {visibleRows.map((row, index) => {
                                     const isItemSelected = isSelected(row.name);
                                     const labelId = `enhanced-table-checkbox-${index}`;
-                                    console.log('element: ', row);
+                                    // console.log('element: ', row);
                                     return (
                                         <TableRow
                                             hover
@@ -375,10 +396,11 @@ export default function EnhancedTable(props: PropsRows) {
                                             >
                                                 {row.name}
                                             </TableCell>
+                                            <TableCell align="right">{row.rollno}</TableCell>
                                             <TableCell align="right">{row.email}</TableCell>
                                             <TableCell align="right">{row.age}</TableCell>
-                                            <TableCell align="right">{row.salary}</TableCell>
-                                            <TableCell align="right">{row.experience}</TableCell>
+                                            <TableCell align="right">{row.cgpa}</TableCell>
+                                            <TableCell align="right">{row.contactNumber}</TableCell>
                                         </TableRow>
                                     );
                                 })}
