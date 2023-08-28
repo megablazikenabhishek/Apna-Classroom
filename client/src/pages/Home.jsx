@@ -31,12 +31,12 @@ const HomeScreen = () => {
         <div className="flex max-w-[500px]">
           <div className="content">
             <h2 className="md:text-[40px] text-[32px] font-normal m-0 text-center">
-              Premium video meetings. Now free for everyone.
+              Premium video lecutres for everyone
             </h2>
-            <p className="text-[18px] font-light mt-4 text-center">
+            {/* <p className="text-[18px] font-light mt-4 text-center">
               No need to sign up or create an account. Just start <br />a
               meeting and share the link. That's it.
-            </p>
+            </p> */}
             <div className="m-10 flex items-center justify-around">
               <button
                 onClick={startCall}
@@ -72,7 +72,7 @@ const HomeScreen = () => {
             </div> */}
           </div>
         </div>
-        <div className="flex">
+        {/* <div className="flex">
           <div className="max-w-[500px]">
             <img
               src="https://www.gstatic.com/meet/google_meet_marketing_ongoing_meeting_grid_427cbb32d746b1d0133b898b50115e96.jpg"
@@ -80,7 +80,7 @@ const HomeScreen = () => {
               className="rounded-md"
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
