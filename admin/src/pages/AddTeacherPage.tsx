@@ -25,17 +25,36 @@ export default function AddTeacherPage() {
     const handleSubmit = (e: any) => {
         e.preventDefault();
         const postData = async () => {
-            const res = await axios.post(`${URI}/api/v1/admin/teacher`, {
-                name,
-                email,
-                contactNumber: phone,
-                address,
-                birthday,
-                age,
-                salary,
-                yearOfExperience
-            })
-            console.log(res)
+            try {
+                const res = await axios.post(`${URI}/api/v1/admin/teacher`, {
+                    name,
+                    email,
+                    contactNumber: phone,
+                    address,
+                    birthday,
+                    age,
+                    salary,
+                    yearOfExperience
+                })
+                console.log("res", res);
+                if (res.status == 200) {
+                    alert('Teacher Added Successfully')
+                    setName('')
+                    setEmail('')
+                    setPhone('')
+                    setAddress('')
+                    setDob('')
+                    setAge(0)
+                    setSalary(0)
+                    setYearOfExperience(0)
+                } else {
+                    alert('Something went wrong')
+                }
+            } catch (err) {
+                console.log(err);
+                alert('Something went wrong')
+            }
+
         }
 
         postData();
@@ -53,10 +72,10 @@ export default function AddTeacherPage() {
                     <Stack spacing={4} sx={{ width: '50%' }}>
                         <TextField id="standard-basic" label="Enter Name" variant="standard" onChange={(e) => {
                             setName(e.currentTarget.value)
-                        }} sx={{ width: '300px' }} required />
+                        }} sx={{ width: '300px' }} required value={name} />
                         <TextField id="standard-basic" label="Enter Email" variant="standard" onChange={(e) => {
                             setEmail(e.currentTarget.value)
-                        }} sx={{ width: '300px' }} type='email' required />
+                        }} sx={{ width: '300px' }} type='email' required value={email} />
                         <TextField
                             id="filled-number"
                             label="Enter Age"
@@ -67,19 +86,20 @@ export default function AddTeacherPage() {
                             onChange={(e) => {
                                 setAge(Number(e.currentTarget.value))
                             }} required
+                            value={age}
                         // variant="filled"
                         />
                         <TextField id="standard-basic" label="Enter DOB" variant="standard" onChange={(e) => {
                             setDob(e.currentTarget.value)
-                        }} sx={{ width: '300px' }} required />
+                        }} sx={{ width: '300px' }} required value={birthday} />
                     </Stack>
                     <Stack spacing={4} sx={{ width: '50%' }}>
                         <TextField id="standard-basic" label="Enter Adress" variant="standard" onChange={(e) => {
                             setAddress(e.currentTarget.value)
-                        }} sx={{ width: '300px' }} multiline required />
+                        }} sx={{ width: '300px' }} multiline required value={address} />
                         <TextField id="standard-basic" label="Enter Phone no." variant="standard" onChange={(e) => {
                             setPhone(e.currentTarget.value)
-                        }} sx={{ width: '300px' }} required />
+                        }} sx={{ width: '300px' }} required value={phone} />
                         <TextField
                             id="filled-number"
                             label="Enter Salary"
@@ -90,6 +110,7 @@ export default function AddTeacherPage() {
                             onChange={(e) => {
                                 setSalary(Number(e.currentTarget.value))
                             }} required
+                            value={salary}
                         />
                         <TextField
                             id="filled-number"
@@ -101,6 +122,7 @@ export default function AddTeacherPage() {
                             onChange={(e) => {
                                 setYearOfExperience(Number(e.currentTarget.value))
                             }} required
+                            value={yearOfExperience}
                         />
 
                     </Stack>

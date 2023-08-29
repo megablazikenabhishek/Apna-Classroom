@@ -364,7 +364,7 @@ export default function EnhancedTable(props: PropsRows) {
                                 rowCount={rows.length}
                             />
                             <TableBody>
-                                {visibleRows.map((row, index) => {
+                                {visibleRows.map((row: any, index) => {
                                     const isItemSelected = isSelected(row.name);
                                     const labelId = `enhanced-table-checkbox-${index}`;
                                     // console.log('element: ', row);
