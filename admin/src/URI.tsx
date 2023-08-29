@@ -1,2 +1,2 @@
-const URI = 'http://localhost:8000';
+const URI = import.meta.env.VITE_BACKEND;
 export default URI;
