@@ -1,5 +1,5 @@
 import firebase from "firebase";
-import secret from "../secrets.js";
+import secret from "../secret";
 const config = {
   databaseURL: secret.DATABASE_URL,
   apiKey: secret.API_KEY,
