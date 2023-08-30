@@ -30,7 +30,7 @@ const HomeScreen = () => {
       <div className="flex md:flex-row flex-col px-4 items-center justify-around h-full pb-48">
         <div className="flex max-w-[500px]">
           <div className="content">
-            <h2 className="md:text-[40px] text-[32px] font-normal m-0 text-center">
+            <h2 className="md:text-[40px] text-[32px] text-[#181818] font-normal m-0 text-center">
               Premium video lecutres for everyone
             </h2>
             {/* <p className="text-[18px] font-light mt-4 text-center">

@@ -1,8 +1,8 @@
+import SignIn from "./pages/AuthPages/Sign-in/SignIn";
 import HomeScreen from "./pages/Home";
 import Room from "./pages/Room";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./pages/AuthPages/LoginAuth/Login";
-import Register from "./pages/AuthPages/RegisterAuth/Register";
+import SignUp from "./pages/AuthPages/Sign-up/SignUp";
 
 function App() {
   return (
@@ -10,8 +10,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/room" element={<Room />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/sign-up" element={<Register />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   );
