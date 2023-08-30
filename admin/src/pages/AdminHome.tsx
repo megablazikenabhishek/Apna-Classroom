@@ -22,6 +22,7 @@ import AddStudentPage from './AddStudentPage';
 import ViewStudentPage from './ViewStudentPage';
 import URI from '../URI';
 import axios from 'axios';
+import EditSubjectPage from './EditSubjectPage';
 
 function Copyright(props: any) {
     return (
@@ -217,6 +218,8 @@ export default function Dashboard(props: path) {
                 return <AddStudentPage />;
             case 4:
                 return <ViewStudentPage rows={viewStudentData} />;
+            case 5:
+                return <EditSubjectPage />;
             default:
                 return <Reports />;
         }
