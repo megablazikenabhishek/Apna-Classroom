@@ -10,8 +10,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/room" element={<Room />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   );
