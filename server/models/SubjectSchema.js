@@ -6,6 +6,7 @@ const SubjectSchema = new mongoose.Schema(
       type: String,
       required: [true, "Name is required"],
       minlength: [2, "Name must be at least 2 characters long"],
+      unique: true,
     },
     description: {
       type: String,

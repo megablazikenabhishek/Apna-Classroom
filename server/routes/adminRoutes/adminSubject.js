@@ -1,15 +1,11 @@
 const router = require("express").Router();
 const Subject = require("../../models/SubjectSchema");
+const Teacher = require("../../models/TeacherSchema");
 
 // Create a subject
 router.post("/create", async (req, res) => {
   try {
-    const { name, description } = req.body;
-    const newSubject = new Subject({
-      name,
-      description,
-    });
-    await newSubject.save();
+    const newSubject = await Subject.create(req.body);
     res.status(200).json(newSubject);
   } catch (err) {
     res.status(500).json(err);
@@ -30,6 +26,17 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const subject = await Subject.findById(req.params.id);
+    let incharge = [];
+    for (let i = 0; i < subject.incharge.length; i++) {
+      const teacher = await Teacher.findById(subject.incharge[i]);
+      incharge.push({
+        id: teacher._id,
+        name: teacher.name,
+        email: teacher.email,
+      });
+    }
+    subject.incharge = incharge;
+    // console.log(subject.incharge);
     res.status(200).json(subject);
   } catch (err) {
     res.status(500).json(err);
@@ -39,21 +46,19 @@ router.get("/:id", async (req, res) => {
 // add teacher to subject
 router.put("/:id/addTeacher", async (req, res) => {
   try {
-    const subject = await Subject.findById(req.params.id);
-    if (!subject.incharge.includes(req.body.teacherId)) {
-      await subject.updateOne({ $push: { incharge: req.body.teacherId } });
-      res
-        .status(200)
-        .json({
-          msg: "The teacher has been added to the subject",
-          success: true,
-        });
-    } else {
-      res
-        .status(403)
-        .json({ msg: "You have already added the teacher", success: false });
-    }
+    const subject = await Subject.findByIdAndUpdate(req.params.id, {
+      incharge: req.body.incharge,
+    });
+    res
+      .status(200)
+      .json({
+        data: subject,
+        message: "Teacher added successfully",
+        success: true,
+      });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+module.exports = router;

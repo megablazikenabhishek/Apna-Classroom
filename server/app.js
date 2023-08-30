@@ -19,6 +19,11 @@ app.use(
   // checkForAdmin,
   require("./routes/adminRoutes/adminStudent.js")
 );
+app.use(
+  "/api/v1/admin/subject",
+  // checkForAdmin,
+  require("./routes/adminRoutes/adminSubject.js")
+);
 
 const port = process.env.PORT || 8000;
 
