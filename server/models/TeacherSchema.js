@@ -55,16 +55,16 @@ const TeacherSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-TeacherSchema.pre("save", async function (next) {
-  try {
-    if (this.isModified("password")) {
-      this.password = await bcrypt.hash(this.password, 10);
-    }
-    next();
-  } catch (error) {
-    console.log(error);
-  }
-});
+// TeacherSchema.pre("save", async function (next) {
+//   try {
+//     if (this.isModified("password")) {
+//       this.password = await bcrypt.hash(this.password, 10);
+//     }
+//     next();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 const Teacher = mongoose.model("Teacher", TeacherSchema);
 module.exports = Teacher;

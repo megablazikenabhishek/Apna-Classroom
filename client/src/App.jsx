@@ -2,7 +2,8 @@ import SignIn from "./pages/AuthPages/Sign-in/SignIn";
 import HomeScreen from "./pages/Home";
 import Room from "./pages/Room";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SignUp from "./pages/AuthPages/Sign-up/SignUp";
+import TeacherSignUp from "./pages/AuthPages/Sign-up/TeacherSignUp";
+import StudentSignUp from "./pages/AuthPages/Sign-up/StudentSignUp";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
         <Route path="/" element={<HomeScreen />} />
         <Route path="/room" element={<Room />} />
         <Route path="/login" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/teacher/registration/:id" element={<TeacherSignUp />} />
+        <Route path="/student/registration/:id" element={<StudentSignUp />} />
       </Routes>
     </BrowserRouter>
   );

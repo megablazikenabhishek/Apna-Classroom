@@ -55,16 +55,16 @@ const StudentSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-StudentSchema.pre("save", async function (next) {
-  try {
-    if (this.isModified("password")) {
-      this.password = await bcrypt.hash(this.password, 10);
-    }
-    next();
-  } catch (error) {
-    console.log(error);
-  }
-});
+// StudentSchema.pre("save", async function (next) {
+//   try {
+//     if (this.isModified("password")) {
+//       this.password = await bcrypt.hash(this.password, 10);
+//     }
+//     next();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 const Student = mongoose.model("Student", StudentSchema);
 module.exports = Student;

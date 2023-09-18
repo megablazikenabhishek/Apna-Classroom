@@ -24,6 +24,8 @@ app.use(
   // checkForAdmin,
   require("./routes/adminRoutes/adminSubject.js")
 );
+app.use("/api/v1/teacher", require("./routes/teacherRoutes/TeacherRouter"));
+app.use("/api/v1/student", require("./routes/studentRoutes/StudentRouter.js"));
 
 const port = process.env.PORT || 8000;
 
