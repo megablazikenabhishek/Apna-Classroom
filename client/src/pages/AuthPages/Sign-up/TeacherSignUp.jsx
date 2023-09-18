@@ -1,7 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SignUp.css";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import URI from "../../../URI";
 
 const SignUp = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  console.log(id);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [age, setAge] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  useEffect(() => {
+    const fetchStudent = async () => {
+      try {
+        const { data } = await axios.get(`${URI}/api/v1/teacher/${id}`);
+        console.log(data);
+        setName(data.data.name);
+        setEmail(data.data.email);
+        setAge(data.data.age);
+      } catch (error) {
+        console.log(error);
+        console.log(error.config);
+        alert("Something went wrong");
+      }
+    };
+
+    fetchStudent();
+  }, []);
   return (
     <div className="signup-root">
       <div
@@ -103,8 +132,8 @@ const SignUp = () => {
         >
           <div className="signup-box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
             <h1>
-              <a href="http://blog.stackfindover.com/" rel="dofollow">
-                Stackfindover
+              <a href="/" rel="dofollow">
+                Apna Classroom
               </a>
             </h1>
           </div>
@@ -112,26 +141,70 @@ const SignUp = () => {
             <div className="signup-formbg">
               <div className="signup-formbg-inner padding-horizontal--48">
                 <span className="padding-bottom--15">Create an account</span>
-                <form id="stripe-signup">
+                <form
+                  id="stripe-signup"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    console.log("submitted");
+                    const submitData = async () => {
+                      try {
+                        const res = await axios.post(
+                          `${URI}/api/v1/teacher/register`,
+                          {
+                            oldPassword,
+                            newPassword,
+                            email,
+                          }
+                        );
+                        console.log(res);
+                        alert("Password changed successfully");
+                        if (res.status === 200) {
+                          navigate("/teacher/login");
+                        }
+                      } catch (error) {
+                        console.log(error);
+                        console.log(error.config);
+                        alert("Something went wrong");
+                      }
+                    };
+                    submitData();
+                  }}
+                >
                   <div className="signup-field padding-bottom--24">
                     <label htmlFor="name">Name</label>
-                    <input type="text" name="name" />
+                    <input type="text" name="name" disabled value={name} />
                   </div>
                   <div className="signup-field padding-bottom--24">
                     <label htmlFor="age">Age</label>
-                    <input type="number" name="age" />
+                    <input type="number" name="age" disabled value={age} />
                   </div>
                   <div className="signup-field padding-bottom--24">
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" />
+                    <input type="email" name="email" disabled value={email} />
                   </div>
                   <div className="signup-field padding-bottom--24">
-                    <label htmlFor="oldPassword">Old Password</label>
-                    <input type="password" name="oldPassword" />
+                    <label htmlFor="oldPassword">Enter Password</label>
+                    <input
+                      type="password"
+                      name="oldPassword"
+                      required
+                      value={oldPassword}
+                      onChange={(event) => {
+                        setOldPassword(event.target.value);
+                      }}
+                    />
                   </div>
                   <div className="signup-field padding-bottom--24">
-                    <label htmlFor="newPassword">New Password</label>
-                    <input type="password" name="newPassword" />
+                    <label htmlFor="newPassword">Create Password</label>
+                    <input
+                      type="password"
+                      name="newPassword"
+                      required
+                      value={newPassword}
+                      onChange={(event) => {
+                        setNewPassword(event.target.value);
+                      }}
+                    />
                   </div>
                   <div className="signup-field padding-bottom--24">
                     <input
@@ -149,7 +222,7 @@ const SignUp = () => {
               </span>
               <div className="signup-listing padding-top--24 padding-bottom--24 flex-flex center-center">
                 <span>
-                  <a href="#">© Stackfindover</a>
+                  <a href="#">© Apna Classroom</a>
                 </span>
                 <span>
                   <a href="#">Contact</a>
