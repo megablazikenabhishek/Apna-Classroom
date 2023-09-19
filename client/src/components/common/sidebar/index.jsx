@@ -15,7 +15,7 @@ const Sidebar = () => {
             return (
               <SidebarOption
                 option={option}
-                isActive={option.name === "Calls" ? true : false}
+                isActive={option.name === "Activity" ? true : false}
               />
             );
           })}

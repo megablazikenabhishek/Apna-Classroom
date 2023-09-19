@@ -3,11 +3,13 @@
   width: 100%;
   flex: 1;
   height: 94%;
+  overflow: hidden;
 }
 
 .calls-container {
   width: 100%;
   height: 100vh;
+  overflow: hidden;
 }
 
 .calls-sidebar {
@@ -21,6 +23,7 @@
 }
 
 .calls-rightFold {
-  display: flex;
+  /* display: flex; */
   flex: 11;
+  width: 100%;
 }

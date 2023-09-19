@@ -14,7 +14,7 @@ const SignIn = () => {
     e.preventDefault();
     const submitResponse = async () => {
       try {
-        const res = await axios.post(`${URI}/api/v1/student/login`, {
+        const res = await axios.post(`${URI}/api/v1/teacher/login`, {
           email,
           password,
         });
