@@ -3,7 +3,7 @@
   background-color: #ebebeb;
   box-shadow: 5px 0px 6px #dbdbdb, -5px 0px 6px #dbdbdb;
   width: 100%;
-  z-index: -1;
+    overflow-x: scroll;
 }
 
 .leftFold-menu {
@@ -14,7 +14,7 @@
 .leftFold-dialer {
   padding: 16px;
   background-color: white;
-  height: 47%;
+  height: 100%;
   position: relative;
 }
 

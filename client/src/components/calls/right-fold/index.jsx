@@ -1,34 +1,43 @@
-import "./right-fold.css";
-import { CallsContact } from "../../../data/calls";
-import ContactCard from "./contact-card";
+// import "./right-fold.css";
+import { Paper } from "@mui/material";
+import Navbar from "./Button Navigation/InnerNav";
+import { useState } from "react";
+import Nav from "./Sub Navbar/UpparNav";
+import Chat from "./Chat Section/Chat";
+import Uploads from "./Uploads Section/Uploads";
 
-const RightFold = () => {
-  const contacts = CallsContact;
+const RightFold = (props) => {
+  const { subject } = props;
+  console.log("subject", subject);
+
+  const [section, setSection] = useState(0);
+  console.log("section", section);
+  const render_component = (value) => {
+    console.log("value", value);
+    switch (value) {
+      case 0:
+        return <Chat subject={subject} />;
+        break;
+      case 2:
+        return <Uploads subject={subject} />;
+        break;
+      default:
+        return <Chat subject={subject} />;
+        break;
+    }
+  };
   return (
-    <div className="rightFold">
-      <div className="rightFold-heading">
-        <label className="heading-label">Contacts</label>
-      </div>
-      <div className="rightFold-options">
-        <div className="contact-search">
-          <input placeholder="Find a contact" />
-          <div className="contact-search-icon">
-            <i className="fi-rr-search"></i>
-          </div>
-        </div>
-        <div className="add-button">
-          <div className="add-icon">
-            <i className="fi-rr-user-add"></i>
-          </div>
-          <label className="add-label">Add Contact</label>
-        </div>
-      </div>
-      <div className="contact-list">
-        {contacts.map((item) => {
-          return <ContactCard item={item} />;
-        })}
-      </div>
-    </div>
+    <>
+      <Nav subject={subject} />
+      <Navbar
+        style={{ width: "100%" }}
+        setSection={setSection}
+        section={section}
+      />
+      <Paper sx={{ height: "100%" }} elevation={3}>
+        {render_component(section)}
+      </Paper>
+    </>
   );
 };
 

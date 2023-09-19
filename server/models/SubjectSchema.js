@@ -21,6 +21,10 @@ const SubjectSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
+    files: {
+      type: Array,
+      default: [],
+    },
   },
   { timestamps: true }
 );

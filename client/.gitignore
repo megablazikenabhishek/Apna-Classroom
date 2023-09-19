@@ -12,7 +12,6 @@ dist
 dist-ssr
 *.local
 .env
-src/secret.jsx
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -23,5 +22,3 @@ src/secret.jsx
 *.njsproj
 *.sln
 *.sw?
-
-./src/secret.jsx
