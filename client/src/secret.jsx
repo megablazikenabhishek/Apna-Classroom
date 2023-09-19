@@ -1,6 +1,6 @@
 const secret = {
-  DATABASE_URL: process.env.VITE_DATABASE_URL,
-  API_KEY: process.env.VITE_API_KEY,
+  DATABASE_URL: import.meta.env.VITE_DATABASE_URL,
+  API_KEY: import.meta.env.VITE_API_KEY,
 };
 
 export default secret;
