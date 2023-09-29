@@ -1,1 +1,1 @@
-# Apna Classroom made using React + Vite and firebase.
+# Apna Classroom Client made using React + Vite and firebase.
