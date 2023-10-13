@@ -8,7 +8,7 @@ const Header = () => {
         <i className="fi-rr-layout-fluid"></i>
       </div>
       <div className="header-leftFold">
-        <label className="header-label">Microsoft Teams</label>
+        <label className="header-label">Apna Classroom</label>
       </div>
       <div className="header-rightFold">
         <div className="header-search">
